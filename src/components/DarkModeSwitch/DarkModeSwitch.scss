@@ -1,22 +1,24 @@
 @use 'sass:list';
 
+$locs: (12px, 0), (6px, -10.4px), (-6px, -10.4px), (-12px, 0), (-6px, 10.4px), (6px, 10.4px);
+$tr-pcts: (42%, 67%), (28%, 53%), (14%, 34%), (0%, 20%), (70%, 100%), (56%, 86%);
+
 @mixin animate($name, $duration, $method) {
-    @keyframes #{$name} {
-        @content;
-    }
+    @keyframes #{$name} { @content; }
     animation-name: $name;
     animation-duration: $duration;
     animation-timing-function: $method;
-    @include webkit-animate(webkit-$name, $duration, $method)
+    @include webkit-animate(webkit-#{$name}, $duration, $method) { @content; }
 }
 @mixin webkit-animate($name, $duration, $method) {
-
-    @-webkit-keyframes #{$name} {
-        @content;
-    }
+    @-webkit-keyframes #{$name} { @content; }
     -webkit-animation-name: $name;
     -webkit-animation-duration: $duration;
     -webkit-animation-timing-function: $method;
+}
+@mixin std-webkit-transition($tr-sec) {
+    transition: all $tr-sec ease-in-out;
+    -webkit-transition: all $tr-sec ease-in-out;
 }
 .ai-dark-mode-switch {
     border: none;
@@ -25,16 +27,10 @@
     padding: 0;
 
     svg {
-        // transition: all var(--tr-sec) ease-in-out;
-        #moon {
-            fill: var(--theme-anim);
-            // transition: all calc(var(--tr-sec)/3) ease-in-out;
-        }
+        transition: all var(--tr-sec) ease-in-out; -webkit-transition: none;
+        #moon { fill: var(--theme-anim); @include std-webkit-transition(calc(var(--tr-sec)/3)) }
         #moon-mask {
-            > circle { 
-                // fill: #fff; 
-                // transition: all calc(var(--tr-sec)/3) ease-in-out; 
-            }
+            > circle { fill: #000; @include std-webkit-transition(calc(var(--tr-sec)/3)) }
             > rect { fill: #fff; }
         }
     
@@ -42,7 +38,7 @@
             fill: var(--theme-anim);
         }
         #dots-mask {
-            > circle { fill: #000; }
+            > circle { fill: #000; @include std-webkit-transition(calc(var(--tr-sec)/3)) }
             > rect { fill: #fff; }
         }
     }
@@ -55,30 +51,19 @@
             0% { transform: rotate(-45deg); }
             100% { transform: rotate(150deg); }
         }
-        #moon-mask > circle {
-            fill: #fff;
-            // transform: translateX(15px); -webkit-transform: translateX(15px); 
-        }
+        #moon-mask > circle { transform: translateX(15px); -webkit-transform: translateX(15px); }
         > g {
             --ai-dark-mode-anim-len: calc(var(--tr-sec)*2/3);
-            $locs: (12px, 0), (6px, -10.4px), (-6px, -10.4px), (-12px, 0), (-6px, 10.4px), (6px, 10.4px);
-            $tr-pcts: (42%, 67%), (28%, 53%), (14%, 34%), (0%, 20%), (70%, 100%), (56%, 86%);
 
             @for $i from 1 through 6 {
                 #spot-#{$i} {
                     transform: translate(0, 0);
                     -webkit-transform: translate(0, 0);
                     @include animate(spot-#{$i}-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
-                        0% { transform: translate(#{list.nth($locs, $i)}); }
-                        #{list.nth(list.nth($tr-pcts, $i), 1)} { transform: translate(#{list.nth($locs, $i)}); }
-                        #{list.nth(list.nth($tr-pcts, $i), 2)} { transform: translate(0, 0); }
-                        100% { transform: translate(0, 0); }
-                    }
-                    @include webkit-animate(webkit-spot-#{$i}-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
-                        0% { transform: translate(#{list.nth($locs, $i)}); }
-                        #{list.nth(list.nth($tr-pcts, $i), 1)} { transform: translate(#{list.nth($locs, $i)}); }
-                        #{list.nth(list.nth($tr-pcts, $i), 2)} { transform: translate(0, 0); }
-                        100% { transform: translate(0, 0); }
+                        0% { transform: translate(#{list.nth($locs, $i)}); -webkit-transform: translate(#{list.nth($locs, $i)}); }
+                        #{list.nth(list.nth($tr-pcts, $i), 1)} { transform: translate(#{list.nth($locs, $i)}); -webkit-transform: translate(#{list.nth($locs, $i)}); }
+                        #{list.nth(list.nth($tr-pcts, $i), 2)} { transform: translate(0, 0); -webkit-transform: translate(0, 0); }
+                        100% { transform: translate(0, 0); -webkit-transform: translate(0, 0); }
                     }
                 }
             }
@@ -94,22 +79,19 @@
         transform: rotate(-45deg);
         -webkit-transform: rotate(-45deg);
         @include animate(moon-sway, var(--tr-sec), ease-in-out) {
-            0% { transform: rotate(90deg); }
-            40% { transform: rotate(-60deg); }
-            70% { transform: rotate(-30deg); }
-            100% { transform: rotate(-45deg); }
+            0% { transform: rotate(-45deg); -webkit-transform: rotate(-45deg); }
+            1% { transform: rotate(90deg); -webkit-transform: rotate(90deg); }
+            40% { transform: rotate(-60deg); -webkit-transform: rotate(-60deg); }
+            70% { transform: rotate(-30deg); -webkit-transform: rotate(-30deg); }
+            100% { transform: rotate(-45deg); -webkit-transform: rotate(-45deg); }
         }
-        #moon-mask > circle {
-            fill: #000;
-            // transform: translateX(0); -webkit-transform: translateX(0); 
-        }
+        #moon-mask > circle { transform: translateX(0); -webkit-transform: translateX(0); }
         > g {
-            #spot-1 { transform: translate(12px, 0); }
-            #spot-2 { transform: translate(6px, -10.4px); }
-            #spot-3 { transform: translate(-6px, -10.4px); }
-            #spot-4 { transform: translate(-12px, 0); }
-            #spot-5 { transform: translate(-6px, 10.4px); }
-            #spot-6 { transform: translate(6px, 10.4px); }
+            @for $i from 1 through 6 {
+                #spot-#{$i} {
+                    transform: translate(#{list.nth($locs, $i)}); -webkit-transform: translate(#{list.nth($locs, $i)})
+                }
+            }
         }
     }
 }
