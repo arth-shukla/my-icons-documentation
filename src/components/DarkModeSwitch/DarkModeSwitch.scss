@@ -32,7 +32,7 @@
         }
         #moon-mask {
             > circle { 
-                fill: '#fff'; 
+                // fill: #fff; 
                 // transition: all calc(var(--tr-sec)/3) ease-in-out; 
             }
             > rect { fill: #fff; }
@@ -55,7 +55,10 @@
             0% { transform: rotate(-45deg); }
             100% { transform: rotate(150deg); }
         }
-        #moon-mask > circle { transform: translateX(15px); -webkit-transform: translateX(15px); }
+        #moon-mask > circle {
+            fill: #fff;
+            // transform: translateX(15px); -webkit-transform: translateX(15px); 
+        }
         > g {
             --ai-dark-mode-anim-len: calc(var(--tr-sec)*2/3);
             $locs: (12px, 0), (6px, -10.4px), (-6px, -10.4px), (-12px, 0), (-6px, 10.4px), (6px, 10.4px);
@@ -96,7 +99,10 @@
             70% { transform: rotate(-30deg); }
             100% { transform: rotate(-45deg); }
         }
-        #moon-mask > circle { transform: translateX(0); -webkit-transform: translateX(0); }
+        #moon-mask > circle {
+            fill: #000;
+            // transform: translateX(0); -webkit-transform: translateX(0); 
+        }
         > g {
             #spot-1 { transform: translate(12px, 0); }
             #spot-2 { transform: translate(6px, -10.4px); }
