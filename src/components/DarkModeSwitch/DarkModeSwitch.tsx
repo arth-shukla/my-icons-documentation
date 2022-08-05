@@ -41,7 +41,6 @@ function DarkModeSwitch({
             height: size,
             ...style,
         } as React.CSSProperties}
-        aria-hidden={true}
         {...rest}
     >
         <svg width={Math.sqrt(Math.pow(size,2)/2)} height={Math.sqrt(Math.pow(size,2)/2)} viewBox='0 0 30 30' aria-hidden={true}>
