@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 function App() {
   return <>
     <header>
-      <h1>My Icon Animations</h1>
+      <h1>My Icon Animations1</h1>
     </header>
     <div>
       <IconsTest />
