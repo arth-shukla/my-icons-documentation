@@ -4,7 +4,7 @@ import { ColorSwitch } from '../components/index'
 
 function IconSampleDocumentation() {
     return <Accordion>
-        <Accordion alwaysOpen>
+        <Accordion alwaysOpen style={{maxWidth: '800px', margin: 'auto',}}>
             {Object.keys(IconSamples).sort().map((key, i) => {
                 const IconSample = IconSamples[key]
                 return <Accordion.Item eventKey={String(i)}>
