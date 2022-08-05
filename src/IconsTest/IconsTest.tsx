@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Accordion, Table } from "react-bootstrap"
 import { ColorSwitch } from '../components/index'
+import './IconsTest.scss'
 
 function IconSampleDocumentation() {
     return <Accordion>
@@ -45,6 +46,7 @@ const AccordionColorSwitch = () => {
                 colors={colors}
                 onClick={() => {setCurrentColorIndex((currentColorIndex + 1) % colors.length)}}
                 animDuration={animDuration}
+                size={40}
             />
         </p>
         <p>

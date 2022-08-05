@@ -14,11 +14,10 @@
         margin:auto;
     }
     .ai-color-targ-0 {
-        // border: calc(-1*var(--ai-color-switch-size)/2) solid var(--ai-color-switch-color);
-        background-color: var(--ai-color-switch-color);
+        border: calc(var(--ai-color-switch-size)/2) solid var(--ai-color-switch-color);
     }
     .ai-color-targ-1 {
         background-color: var(--ai-color-switch-color);
-        // border: 1px solid var(--ai-color-switch-color);
+        border: 1px solid var(--ai-color-switch-color);
     }
 }
