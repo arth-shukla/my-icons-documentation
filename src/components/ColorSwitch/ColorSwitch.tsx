@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import './ColorSwitch.scss'
 
 interface ColorSwitchProps {
+    colors: Array<string>,
     currentColorIndex?: number, 
-    colors: Array<string>, 
     onClick?: () => void, 
     className?: string, 
     size?: number,
@@ -11,21 +11,18 @@ interface ColorSwitchProps {
     [x: string]: any,
 }
 
-function ColorSwitch( { currentColorIndex, colors, onClick, className, size=40, animDuration= '.4s' }: ColorSwitchProps ) {
+function ColorSwitch( { currentColorIndex, colors, onClick, className, size=40, animDuration='.4s', ...rest }: ColorSwitchProps ) {
 
     const [childCurrentColorIndex, setChildCurrentColorIndex] = useState<number>(currentColorIndex || 0)
     const [selectNum, setSelectNum] = useState<number>(0)
     const colorIndex: number = currentColorIndex || childCurrentColorIndex
 
-    const childOnClick = () => {
+    const childOnClick: () => void = () => {
         if (onClick) onClick()
         
         setChildCurrentColorIndex((childCurrentColorIndex + 1) % colors.length)
         setSelectNum(selectNum + 1)
     }
-
-    if (!colors || colors?.length < 2)
-        throw new Error('ERROR: colors array required for ColorSwitch component')
 
     return <button
         className='ai-color-switch'
@@ -37,6 +34,7 @@ function ColorSwitch( { currentColorIndex, colors, onClick, className, size=40, 
             '--ai-color-switch-tr-sec': animDuration,
             '--ai-color-switch-size': `${size*.558}px`
         } as React.CSSProperties}
+        {...rest}
     >
         <div aria-hidden={true} className={`ai-color-targ ai-color-targ-${selectNum%2}`}></div>
     </button>

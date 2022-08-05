@@ -1,0 +1,74 @@
+.ai-dark-mode-switch {
+    border: none;
+    background-color: inherit;
+    margin: .25em 0;
+    padding: 0;
+
+    svg {
+        transition: all var(--tr-sec) ease-in-out;
+        
+        #moon {
+            fill: var(--theme-anim);
+            transition: all var(--tr-sec) ease-in-out;
+        }
+        #moon-mask {        
+            > circle {
+                fill: #000;
+                transition: all var(--tr-sec) ease-in-out;
+            }
+        
+            > rect {
+                fill: #fff;
+                transition: all var(--tr-sec) ease-in-out;
+            }
+        }
+    
+        g > circle {
+            fill: var(--theme-anim);
+            transform: none;
+            transition: all var(--tr-sec) ease-in-out;
+        }
+        #dots-mask {
+            > circle {
+                fill: #000;
+                transition: all var(--tr-sec) ease-in-out;
+            }
+    
+            > rect {
+                fill: #fff;
+                transition: all var(--tr-sec) ease-in-out;
+            }
+        }
+    }
+}
+.ai-dark-mode-switch-sun { 
+    svg {
+        transform: rotate(90deg);
+
+        #moon-mask > circle { transform: translateX(15px); }
+    }
+}
+.ai-dark-mode-switch-sun:hover {
+    #moon { fill: #000 !important; }
+    g > circle { fill: #000 !important; }
+}
+.ai-dark-mode-switch-moon { 
+    svg { 
+        transform: rotate(-45deg);
+
+        #moon-mask > circle { transform: translateX(0); }
+    
+        > g {
+            #spot-1 { transform: translate(12px, 0); }
+            #spot-2 { transform: translate(6px, -10.4px); }
+            #spot-3 { transform: translate(-6px, -10.4px); }
+            #spot-6 { transform: translate(6px, 10.4px); }
+            #spot-5 { transform: translate(-6px, 10.4px); }
+            #spot-4 { transform: translate(-12px, 0); }
+        }
+    }
+}
+.ai-dark-mode-switch-moon:hover { 
+    #moon { fill: #fff !important; }
+    g > circle { fill: #fff !important; }
+}
