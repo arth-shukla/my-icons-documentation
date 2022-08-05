@@ -7,11 +7,16 @@
     animation-name: $name;
     animation-duration: $duration;
     animation-timing-function: $method;
+    @include webkit-animate(webkit-$name, $duration, $method)
 }
-@mixin keyframes($name){
-    @keyframes #{$name}{
+@mixin webkit-animate($name, $duration, $method) {
+
+    @-webkit-keyframes #{$name} {
         @content;
     }
+    -webkit-animation-name: $name;
+    -webkit-animation-duration: $duration;
+    -webkit-animation-timing-function: $method;
 }
 .ai-dark-mode-switch {
     border: none;
@@ -62,62 +67,14 @@
                         #{list.nth(list.nth($tr-pcts, $i), 2)} { transform: translate(0, 0); }
                         100% { transform: translate(0, 0); }
                     }
+                    @include webkit-animate(webkit-spot-#{$i}-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
+                        0% { transform: translate(#{list.nth($locs, $i)}); }
+                        #{list.nth(list.nth($tr-pcts, $i), 1)} { transform: translate(#{list.nth($locs, $i)}); }
+                        #{list.nth(list.nth($tr-pcts, $i), 2)} { transform: translate(0, 0); }
+                        100% { transform: translate(0, 0); }
+                    }
                 }
             }
-            // #spot-1 {
-            //     transform: translate(0, 0);
-            //     @include animate(spot-1-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
-            //         0% { transform: translate(12px, 0); }
-            //         42% { transform: translate(12px, 0); }
-            //         67% { transform: translate(0, 0); }
-            //         100% { transform: translate(0, 0); }
-            //     }
-            // }
-            // #spot-2 {
-            //     transform: translate(0, 0);
-            //     @include animate(spot-2-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
-            //         0% { transform: translate(6px, -10.4px); }
-            //         28% { transform: translate(6px, -10.4px); }
-            //         53% { transform: translate(0, 0); }
-            //         100% { transform: translate(0, 0); }
-            //     }
-            // }
-            // #spot-3 {
-            //     transform: translate(0, 0);
-            //     @include animate(spot-3-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
-            //         0% { transform: translate(-6px, -10.4px); }
-            //         14% { transform: translate(-6px, -10.4px); }
-            //         34% { transform: translate(0, 0); }
-            //         100% { transform: translate(0, 0); }
-            //     }
-            // }
-            // #spot-4 {
-            //     transform: translate(0, 0);
-            //     @include animate(spot-4-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
-            //         0% { transform: translate(-12px, 0); }
-            //         0% { transform: translate(-12px, 0); }
-            //         20% { transform: translate(0, 0); }
-            //         100% { transform: translate(0, 0); }
-            //     }
-            // }
-            // #spot-5 {
-            //     transform: translate(0, 0);
-            //     @include animate(spot-5-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
-            //         0% { transform: translate(-6px, 10.4px); }
-            //         70% { transform: translate(-6px, 10.4px); }
-            //         100% { transform: translate(0, 0); }
-            //         100% { transform: translate(0, 0); }
-            //     }
-            // }
-            // #spot-6 {
-            //     transform: translate(0, 0);
-            //     @include animate(spot-6-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
-            //         0% { transform: translate(6px, 10.4px); }
-            //         56% { transform: translate(6px, 10.4px); }
-            //         86% { transform: translate(0, 0); }
-            //         100% { transform: translate(0, 0); }
-            //     }
-            // }
         }
     }
 }
