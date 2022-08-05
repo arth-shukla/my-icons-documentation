@@ -25,13 +25,16 @@
     padding: 0;
 
     svg {
-        transition: all var(--tr-sec) ease-in-out;
+        // transition: all var(--tr-sec) ease-in-out;
         #moon {
             fill: var(--theme-anim);
-            transition: all calc(var(--tr-sec)/3) ease-in-out;
+            // transition: all calc(var(--tr-sec)/3) ease-in-out;
         }
         #moon-mask {
-            > circle { fill: '#fff'; transition: all calc(var(--tr-sec)/3) ease-in-out; }
+            > circle { 
+                fill: '#fff'; 
+                // transition: all calc(var(--tr-sec)/3) ease-in-out; 
+            }
             > rect { fill: #fff; }
         }
     
