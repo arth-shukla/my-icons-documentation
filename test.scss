@@ -1,0 +1,7 @@
+@use 'sass:list';
+
+$locs: (12px, 0), (6px, -10.4px), (-6px, -10.4px), (-12px, 0), (-6px, 10.4px), (6px, 10.4px);
+$tr-pcts: (42%, 67%), (28%, 53%), (14%, 34%), (0%, 20%), (70%, 100%), (56%, 86%);
+
+@debug list.nth($locs, 2);
+@debug list.nth(list.nth($tr-pcts, 1), 1);

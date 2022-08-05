@@ -111,18 +111,20 @@ IconSamples["ColorSwitch"] = AccordionColorSwitch
 const AccordionDarkModeSwitch = () => {
 
     const [darkMode, setDarkMode] = React.useState<boolean>(false)
+    const animDuration: number = 1.2
 
     return <Accordion.Body
         style={{
             backgroundColor: (darkMode) ? '#121212' : '#fff',
             color: (darkMode) ? 'rgba(255, 255, 255, .87)' : '#000',
-            transition: 'color .4s ease-in-out, background-color .4s ease-in-out'
-        }}
+            '--tr-sec': `${animDuration/3}s`,
+        } as React.CSSProperties}
     >
         <p>
             <DarkModeSwitch
                 darkMode={darkMode}
                 onClick={() => { setDarkMode(!darkMode) }}
+                animDuration={`${animDuration}s`}
             />
         </p>
         <p>

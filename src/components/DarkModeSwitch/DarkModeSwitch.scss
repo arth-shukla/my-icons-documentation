@@ -1,3 +1,18 @@
+@use 'sass:list';
+
+@mixin animate($name, $duration, $method) {
+    @keyframes #{$name} {
+        @content;
+    }
+    animation-name: $name;
+    animation-duration: $duration;
+    animation-timing-function: $method;
+}
+@mixin keyframes($name){
+    @keyframes #{$name}{
+        @content;
+    }
+}
 .ai-dark-mode-switch {
     border: none;
     background-color: inherit;
@@ -6,65 +21,127 @@
 
     svg {
         transition: all var(--tr-sec) ease-in-out;
-        
         #moon {
             fill: var(--theme-anim);
-            transition: all var(--tr-sec) ease-in-out;
+            transition: all calc(var(--tr-sec)/3) ease-in-out;
         }
-        #moon-mask {        
-            > circle {
-                fill: #000;
-                transition: all var(--tr-sec) ease-in-out;
-            }
-        
-            > rect {
-                fill: #fff;
-                transition: all var(--tr-sec) ease-in-out;
-            }
+        #moon-mask {
+            > circle { fill: '#fff'; transition: all calc(var(--tr-sec)/3) ease-in-out; }
+            > rect { fill: #fff; }
         }
     
         g > circle {
             fill: var(--theme-anim);
             transform: none;
-            transition: all var(--tr-sec) ease-in-out;
         }
         #dots-mask {
-            > circle {
-                fill: #000;
-                transition: all var(--tr-sec) ease-in-out;
-            }
-    
-            > rect {
-                fill: #fff;
-                transition: all var(--tr-sec) ease-in-out;
-            }
+            > circle { fill: #000; }
+            > rect { fill: #fff; }
         }
     }
 }
 .ai-dark-mode-switch-sun { 
     svg {
-        transform: rotate(90deg);
-
+        transform: rotate(150deg);
+        @include animate(sun-spin, calc(var(--tr-sec)*.85), ease-in-out) {
+            0% { transform: rotate(-45deg); }
+            100% { transform: rotate(150deg); }
+        }
         #moon-mask > circle { transform: translateX(15px); }
+        > g {
+            --ai-dark-mode-anim-len: calc(var(--tr-sec)*2/3);
+            $locs: (12px, 0), (6px, -10.4px), (-6px, -10.4px), (-12px, 0), (-6px, 10.4px), (6px, 10.4px);
+            $tr-pcts: (42%, 67%), (28%, 53%), (14%, 34%), (0%, 20%), (70%, 100%), (56%, 86%);
+
+            @for $i from 1 through 6 {
+                #spot-#{$i} {
+                    transform: translate(0, 0);
+                    @include animate(spot-#{$i}-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
+                        0% { transform: translate(#{list.nth($locs, $i)}); }
+                        #{list.nth(list.nth($tr-pcts, $i), 1)} { transform: translate(#{list.nth($locs, $i)}); }
+                        #{list.nth(list.nth($tr-pcts, $i), 2)} { transform: translate(0, 0); }
+                        100% { transform: translate(0, 0); }
+                    }
+                }
+            }
+            // #spot-1 {
+            //     transform: translate(0, 0);
+            //     @include animate(spot-1-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
+            //         0% { transform: translate(12px, 0); }
+            //         42% { transform: translate(12px, 0); }
+            //         67% { transform: translate(0, 0); }
+            //         100% { transform: translate(0, 0); }
+            //     }
+            // }
+            // #spot-2 {
+            //     transform: translate(0, 0);
+            //     @include animate(spot-2-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
+            //         0% { transform: translate(6px, -10.4px); }
+            //         28% { transform: translate(6px, -10.4px); }
+            //         53% { transform: translate(0, 0); }
+            //         100% { transform: translate(0, 0); }
+            //     }
+            // }
+            // #spot-3 {
+            //     transform: translate(0, 0);
+            //     @include animate(spot-3-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
+            //         0% { transform: translate(-6px, -10.4px); }
+            //         14% { transform: translate(-6px, -10.4px); }
+            //         34% { transform: translate(0, 0); }
+            //         100% { transform: translate(0, 0); }
+            //     }
+            // }
+            // #spot-4 {
+            //     transform: translate(0, 0);
+            //     @include animate(spot-4-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
+            //         0% { transform: translate(-12px, 0); }
+            //         0% { transform: translate(-12px, 0); }
+            //         20% { transform: translate(0, 0); }
+            //         100% { transform: translate(0, 0); }
+            //     }
+            // }
+            // #spot-5 {
+            //     transform: translate(0, 0);
+            //     @include animate(spot-5-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
+            //         0% { transform: translate(-6px, 10.4px); }
+            //         70% { transform: translate(-6px, 10.4px); }
+            //         100% { transform: translate(0, 0); }
+            //         100% { transform: translate(0, 0); }
+            //     }
+            // }
+            // #spot-6 {
+            //     transform: translate(0, 0);
+            //     @include animate(spot-6-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
+            //         0% { transform: translate(6px, 10.4px); }
+            //         56% { transform: translate(6px, 10.4px); }
+            //         86% { transform: translate(0, 0); }
+            //         100% { transform: translate(0, 0); }
+            //     }
+            // }
+        }
     }
 }
 .ai-dark-mode-switch-sun:hover {
     #moon { fill: #000 !important; }
     g > circle { fill: #000 !important; }
 }
-.ai-dark-mode-switch-moon { 
-    svg { 
+.ai-dark-mode-switch-moon {
+    svg {
         transform: rotate(-45deg);
-
+        @include animate(moon-sway, var(--tr-sec), ease-in-out) {
+            0% { transform: rotate(90deg); }
+            40% { transform: rotate(-60deg); }
+            70% { transform: rotate(-30deg); }
+            100% { transform: rotate(-45deg); }
+        }
         #moon-mask > circle { transform: translateX(0); }
-    
         > g {
             #spot-1 { transform: translate(12px, 0); }
             #spot-2 { transform: translate(6px, -10.4px); }
             #spot-3 { transform: translate(-6px, -10.4px); }
-            #spot-6 { transform: translate(6px, 10.4px); }
-            #spot-5 { transform: translate(-6px, 10.4px); }
             #spot-4 { transform: translate(-12px, 0); }
+            #spot-5 { transform: translate(-6px, 10.4px); }
+            #spot-6 { transform: translate(6px, 10.4px); }
         }
     }
 }

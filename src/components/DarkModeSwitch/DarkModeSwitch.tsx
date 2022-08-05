@@ -1,20 +1,22 @@
 import React, { useState } from 'react'
+import './DarkModeSwitch.scss'
 
 interface DarkModeSwitchProps {
     darkMode?: boolean, 
     onClick?: () => void, 
-    className?: string,
     size?: number,
     animDuration?: string,
     lightModeColor?: string, 
     darkModeColor?: string, 
+    className?: string,
+    style?: {},
     [x:string]: any,
 }
 
 function DarkModeSwitch({
-        darkMode, onClick, className,
-        size = 40,
-        animDuration = '.4s',
+        darkMode,
+        onClick = () => {}, size = 40, className='', style={},
+        animDuration = '1.2s',
         lightModeColor = 'rgba(18, 18, 18, .8)',
         darkModeColor = 'rgba(255, 255, 255, .87)',
         ...rest
@@ -25,20 +27,22 @@ function DarkModeSwitch({
     const svgColor: string = isMoon ?  darkModeColor : lightModeColor
 
     const childOnClick: () => void = () => {
-        if (onClick) onClick()
+        onClick()
         setChildDarkMode(!childDarkMode)
     }
 
     return <button 
-        className={"ai-dark-mode-switch" + (isMoon ? " ai-dark-mode-switch-moon " : " ai-dark-mode-switch-sun ") + (className || '')}
+        className={"ai-dark-mode-switch" + (isMoon ? " ai-dark-mode-switch-moon " : " ai-dark-mode-switch-sun ") + className}
         onClick={childOnClick}
-        {...rest}
         style={{
             '--theme-anim': svgColor,
             '--tr-sec': animDuration,
             width: size,
             height: size,
+            ...style,
         } as React.CSSProperties}
+        aria-hidden={true}
+        {...rest}
     >
         <svg width={Math.sqrt(Math.pow(size,2)/2)} height={Math.sqrt(Math.pow(size,2)/2)} viewBox='0 0 30 30' aria-hidden={true}>
             <circle cx="15" cy="15" r={isMoon ? 12 : 6} id="moon" mask="url(#moon-mask)" />
@@ -60,7 +64,7 @@ function DarkModeSwitch({
             </g>
             <mask id="dots-mask">
                 <rect x="0" y="0" width="100%" height="100%" fill='white' />
-                <circle cx="15" cy="15" r="8" fill='black' />
+                <circle cx="15" cy="15" r="6" fill='black' />
             </mask>
         </svg>
     </button>
