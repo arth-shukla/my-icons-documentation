@@ -125,6 +125,8 @@ const AccordionDarkModeSwitch = () => {
                 darkMode={darkMode}
                 onClick={() => { setDarkMode(!darkMode) }}
                 animDuration={`${animDuration}s`}
+                aria-label={`Switch to ${darkMode? 'dark' : 'light'} mode.`}
+                aria-live="polite"
             />
         </p>
         <p>
