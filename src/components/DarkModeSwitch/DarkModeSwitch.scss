@@ -40,7 +40,6 @@
     
         g > circle {
             fill: var(--theme-anim);
-            transform: none;
         }
         #dots-mask {
             > circle { fill: #000; }
@@ -51,11 +50,12 @@
 .ai-dark-mode-switch-sun { 
     svg {
         transform: rotate(150deg);
+        -webkit-transform: rotate(150deg);
         @include animate(sun-spin, calc(var(--tr-sec)*.85), ease-in-out) {
             0% { transform: rotate(-45deg); }
             100% { transform: rotate(150deg); }
         }
-        #moon-mask > circle { transform: translateX(15px); }
+        #moon-mask > circle { transform: translateX(15px); -webkit-transform: translateX(15px); }
         > g {
             --ai-dark-mode-anim-len: calc(var(--tr-sec)*2/3);
             $locs: (12px, 0), (6px, -10.4px), (-6px, -10.4px), (-12px, 0), (-6px, 10.4px), (6px, 10.4px);
@@ -64,6 +64,7 @@
             @for $i from 1 through 6 {
                 #spot-#{$i} {
                     transform: translate(0, 0);
+                    -webkit-transform: translate(0, 0);
                     @include animate(spot-#{$i}-reveal, var(--ai-dark-mode-anim-len), ease-in-out) {
                         0% { transform: translate(#{list.nth($locs, $i)}); }
                         #{list.nth(list.nth($tr-pcts, $i), 1)} { transform: translate(#{list.nth($locs, $i)}); }
@@ -88,13 +89,14 @@
 .ai-dark-mode-switch-moon {
     svg {
         transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
         @include animate(moon-sway, var(--tr-sec), ease-in-out) {
             0% { transform: rotate(90deg); }
             40% { transform: rotate(-60deg); }
             70% { transform: rotate(-30deg); }
             100% { transform: rotate(-45deg); }
         }
-        #moon-mask > circle { transform: translateX(0); }
+        #moon-mask > circle { transform: translateX(0); -webkit-transform: translateX(0); }
         > g {
             #spot-1 { transform: translate(12px, 0); }
             #spot-2 { transform: translate(6px, -10.4px); }
