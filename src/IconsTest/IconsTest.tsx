@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Accordion, Table } from "react-bootstrap"
-import { ColorSwitch } from '@arth-shukla/my-icons'
+import { ColorSwitch } from '../components/index'
 
 function IconSampleDocumentation() {
     return <Accordion>
