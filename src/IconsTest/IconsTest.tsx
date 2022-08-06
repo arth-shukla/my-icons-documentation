@@ -5,7 +5,10 @@ import './IconsTest.scss'
 
 function IconSampleDocumentation() {
 	return (
-		<Accordion defaultActiveKey="0" style={{ maxWidth: '800px', margin: 'auto' }}>
+		<Accordion
+			defaultActiveKey='0'
+			style={{ maxWidth: '800px', margin: 'auto' }}
+		>
 			{Object.keys(IconSamples)
 				.sort()
 				.map((key: string, i: number) => {
@@ -13,7 +16,10 @@ function IconSampleDocumentation() {
 					return (
 						<Accordion.Item eventKey={String(i)}>
 							<Accordion.Header>{key}</Accordion.Header>
-							<Accordion.Collapse eventKey={String(i)} unmountOnExit>
+							<Accordion.Collapse
+								eventKey={String(i)}
+								unmountOnExit
+							>
 								<IconSample />
 							</Accordion.Collapse>
 						</Accordion.Item>
@@ -38,7 +44,7 @@ const AccordionColorSwitch = () => {
 
 	return (
 		<Accordion.Body
-			className="change-code-color"
+			className='change-code-color'
 			style={
 				{
 					'--code-color': colors[currentColorIndex],
@@ -56,7 +62,7 @@ const AccordionColorSwitch = () => {
 					animDuration={animDuration}
 					size={40}
 					aria-label={`Change color to ${colorNames[(currentColorIndex + 1) % colors.length]}.`}
-					aria-live="polite"
+					aria-live='polite'
 				/>
 			</p>
 			<p>
@@ -177,7 +183,7 @@ const AccordionDarkModeSwitch = () => {
 					}}
 					animDuration={`${animDuration}s`}
 					aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode.`}
-					aria-live="polite"
+					aria-live='polite'
 				/>
 			</p>
 			<p>
