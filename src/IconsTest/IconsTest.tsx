@@ -71,7 +71,10 @@ const AccordionColorSwitch = () => {
 			<p>
 				In this example, clicking the <code>ColorSwitch</code> component will change the <code>&lt;code&gt;</code> text color.
 			</p>
-			<Table style={{ color: 'inherit', width: '100%' }}>
+			<Table
+				style={{ color: 'inherit', width: '100%' }}
+				responsive
+			>
 				<thead>
 					<tr>
 						<th>Prop</th>
@@ -192,7 +195,10 @@ const AccordionDarkModeSwitch = () => {
 			<p>
 				In this example, clicking the <code>ColorSwitch</code> component will change the current container to dark mode.
 			</p>
-			<Table style={{ color: 'inherit', width: '100%' }}>
+			<Table
+				style={{ color: 'inherit', width: '100%' }}
+				responsive
+			>
 				<thead>
 					<tr>
 						<th>Prop</th>
