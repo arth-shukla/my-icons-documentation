@@ -9,8 +9,10 @@ function IconSampleDocumentation() {
             {Object.keys(IconSamples).sort().map((key: string, i: number) => {
                 const IconSample: () => JSX.Element = IconSamples[key]
                 return <Accordion.Item eventKey={String(i)}>
-                    <Accordion.Header>{key}</Accordion.Header>
-                    <IconSample />
+                        <Accordion.Header>{key}</Accordion.Header>
+                        <Accordion.Collapse eventKey={String(i)} unmountOnExit>
+                            <IconSample />
+                        </Accordion.Collapse>
                 </Accordion.Item>
             })}
         </Accordion>

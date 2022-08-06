@@ -47,7 +47,7 @@ function DarkModeSwitch({
             <circle cx="15" cy="15" r={isMoon ? 12 : 6} id="moon" mask="url(#moon-mask)" />
             <mask id="moon-mask">
                 <rect x="0" y="0" width="100%" height="100%" />
-                <circle cx="24" cy="14" r="12" />
+                <circle cx="21" cy="8" r="12" />
             </mask>
             <g mask="url(#dots-mask)" >
                 {/* top */}
