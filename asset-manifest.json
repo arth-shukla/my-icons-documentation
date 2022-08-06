@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/my-icons-documentation/static/css/main.05ca0f66.css",
-    "main.js": "/my-icons-documentation/static/js/main.d37a58fb.js",
+    "main.css": "/my-icons-documentation/static/css/main.9e3e2c7e.css",
+    "main.js": "/my-icons-documentation/static/js/main.c4f8a2f6.js",
     "static/js/787.99d76d0a.chunk.js": "/my-icons-documentation/static/js/787.99d76d0a.chunk.js",
     "index.html": "/my-icons-documentation/index.html",
-    "main.05ca0f66.css.map": "/my-icons-documentation/static/css/main.05ca0f66.css.map",
-    "main.d37a58fb.js.map": "/my-icons-documentation/static/js/main.d37a58fb.js.map",
+    "main.9e3e2c7e.css.map": "/my-icons-documentation/static/css/main.9e3e2c7e.css.map",
+    "main.c4f8a2f6.js.map": "/my-icons-documentation/static/js/main.c4f8a2f6.js.map",
     "787.99d76d0a.chunk.js.map": "/my-icons-documentation/static/js/787.99d76d0a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.05ca0f66.css",
-    "static/js/main.d37a58fb.js"
+    "static/css/main.9e3e2c7e.css",
+    "static/js/main.c4f8a2f6.js"
   ]
 }
