@@ -5,3 +5,14 @@ header {
     margin: auto .25em;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .accordion-item:first-child {
+    border-top: 0;
+  }
+  .accordion-item {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+}

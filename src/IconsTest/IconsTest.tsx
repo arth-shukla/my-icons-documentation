@@ -4,18 +4,16 @@ import { ColorSwitch, DarkModeSwitch } from '../components/index'
 import './IconsTest.scss'
 
 function IconSampleDocumentation() {
-    return <Accordion>
-        <Accordion defaultActiveKey="0" style={{maxWidth: '800px', margin: 'auto',}}>
-            {Object.keys(IconSamples).sort().map((key: string, i: number) => {
-                const IconSample: () => JSX.Element = IconSamples[key]
-                return <Accordion.Item eventKey={String(i)}>
-                        <Accordion.Header>{key}</Accordion.Header>
-                        <Accordion.Collapse eventKey={String(i)} unmountOnExit>
-                            <IconSample />
-                        </Accordion.Collapse>
-                </Accordion.Item>
-            })}
-        </Accordion>
+    return <Accordion defaultActiveKey="0" style={{maxWidth: '800px', margin: 'auto',}}>
+        {Object.keys(IconSamples).sort().map((key: string, i: number) => {
+            const IconSample: () => JSX.Element = IconSamples[key]
+            return <Accordion.Item eventKey={String(i)}>
+                    <Accordion.Header>{key}</Accordion.Header>
+                    <Accordion.Collapse eventKey={String(i)} unmountOnExit>
+                        <IconSample />
+                    </Accordion.Collapse>
+            </Accordion.Item>
+        })}
     </Accordion>
 }
 export default IconSampleDocumentation
