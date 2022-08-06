@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Accordion, Table } from 'react-bootstrap'
-import { ColorSwitch, DarkModeSwitch } from '@arth-shukla/my-icons' //'../components/index'
+import { ColorSwitch, DarkModeSwitch } from '@arth-shukla/my-icons'
 import './IconsTest.scss'
 
 function IconSampleDocumentation() {
