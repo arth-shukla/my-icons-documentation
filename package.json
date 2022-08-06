@@ -21,6 +21,8 @@
 		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
+		"full-deploy": "npm run prettier && npm run deploy && git add -A && git commit -m \"full-deploy\"",
+		"prettier": "prettier src --write",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build",
 		"start": "PORT=3001 react-scripts start",
