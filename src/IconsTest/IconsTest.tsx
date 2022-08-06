@@ -5,7 +5,7 @@ import './IconsTest.scss'
 
 function IconSampleDocumentation() {
     return <Accordion>
-        <Accordion alwaysOpen style={{maxWidth: '800px', margin: 'auto',}}>
+        <Accordion defaultActiveKey="0" style={{maxWidth: '800px', margin: 'auto',}}>
             {Object.keys(IconSamples).sort().map((key: string, i: number) => {
                 const IconSample: () => JSX.Element = IconSamples[key]
                 return <Accordion.Item eventKey={String(i)}>
@@ -23,11 +23,6 @@ export default IconSampleDocumentation
 const IconSamples: { [key: string]: () => JSX.Element } = {}
 
 const Req = () => { return <sup style={{color: 'red'}}>required</sup> }
-
-// const AccordionEntryButton = () => {
-//     return <Button label="hi hello" />
-// }
-// IconSamples["Button"] = AccordionEntryButton
 
 const AccordionColorSwitch = () => {
 
