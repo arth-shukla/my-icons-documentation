@@ -1,9 +1,9 @@
 .accordion-body {
-    --code-color: var(--bs-pink);
-    transition: all var(--tr-sec) ease-in-out;
+	--code-color: var(--bs-pink);
+	transition: all var(--tr-sec) ease-in-out;
 
-    code {
-        color: var(--code-color) !important;
-        transition: all var(--tr-sec) ease-in-out;
-    }
+	code {
+		color: var(--code-color) !important;
+		transition: all var(--tr-sec) ease-in-out;
+	}
 }
