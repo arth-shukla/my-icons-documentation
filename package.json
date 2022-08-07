@@ -1,7 +1,7 @@
 {
 	"name": "my-icons-documentation",
 	"homepage": "https://arth-shukla.github.io/my-icons-documentation",
-	"version": "0.1.1",
+	"version": "1.0.0",
 	"private": true,
 	"dependencies": {
 		"@arth-shukla/my-icons": "^1.0.1",
