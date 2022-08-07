@@ -62,7 +62,7 @@ const AccordionColorSwitch = () => {
 					animDuration={animDuration}
 					size={40}
 					aria-label={`Change color to ${colorNames[(currentColorIndex + 1) % colors.length]}.`}
-					aria-live='polite'
+					title={`Change color to ${colorNames[(currentColorIndex + 1) % colors.length]}`}
 				/>
 			</p>
 			<p>
@@ -186,7 +186,7 @@ const AccordionDarkModeSwitch = () => {
 					}}
 					animDuration={`${animDuration}s`}
 					aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode.`}
-					aria-live='polite'
+					title={`Switch to ${darkMode ? 'light' : 'dark'} mode`}
 				/>
 			</p>
 			<p>
