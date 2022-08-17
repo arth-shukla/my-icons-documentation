@@ -151,3 +151,5 @@ yarn-error.log*
 
 .DS_Store
 .backup/
+.vscode/
+.pretterrc

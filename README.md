@@ -9,3 +9,7 @@ The package repo can be found here: https://github.com/arth-shukla?tab=repositor
 The package itself is available through GitHub packages here: https://github.com/arth-shukla/my-icons/packages/1583093.
 
 A real project where I've used these components is this DnD Dice Roller: https://arth-shukla.github.io/dice-roller/.
+
+# About Me
+
+Arth Shukla [GitHub](https://github.com/arth-shukla) | [LinkedIn](https://www.linkedin.com/in/arth-shukla/)
