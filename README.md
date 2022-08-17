@@ -1,3 +1,11 @@
+# Technologies Used
+
+Web Development: React, TypeScript, SCSS
+
+DevOps: Git, GitHub Pages
+
+Development Standards: Web Content Accessibility Guidelines (WCAG) 2.1, Aria Authoring Practices Guide (APG)
+
 # Description
 
 This page holds documentation and demos for my icon animation component library.
