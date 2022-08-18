@@ -373,6 +373,17 @@ const AccordionTextTypeDelete = () => {
 					</tr>
 					<tr>
 						<td>
+							<code>fontFamily</code>
+						</td>
+						<td>
+							<code>string</code>
+						</td>
+						<td>
+							Font family of <i>all</i> animation text. By default set to <code>'Courier New', Courier, monospace</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
 							<code>loop</code>
 						</td>
 						<td>
