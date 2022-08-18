@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Accordion, Table } from 'react-bootstrap'
-import { ColorSwitch, DarkModeSwitch } from '@arth-shukla/my-icons'
+import { ColorSwitch, DarkModeSwitch, TextTypeDelete } from '@arth-shukla/my-icons'
 import './IconsTest.scss'
 
 function IconSampleDocumentation() {
@@ -302,3 +302,195 @@ const AccordionDarkModeSwitch = () => {
 	)
 }
 IconSamples['DarkModeSwitch'] = AccordionDarkModeSwitch
+
+const AccordionTextTypeDelete = () => {
+	return (
+		<Accordion.Body>
+			<p>
+				<TextTypeDelete
+					constText="Hi! I'm "
+					typeText={[' a developer.', ' a student.', ' Arth.']}
+					typeTextColor='var(--bs-pink)'
+					fontSize='40px'
+					cursorWidth='3px'
+					cursorHeight='42px'
+				/>
+			</p>
+			<p>
+				The <code>TextTypeDelete</code> component is an animation which types, then deletes strings of text.
+			</p>
+			<Table
+				style={{ color: 'inherit', width: '100%' }}
+				responsive
+			>
+				<thead>
+					<tr>
+						<th>Prop</th>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>typeText</code> <Req />
+						</td>
+						<td>
+							<code>string[]</code>
+						</td>
+						<td>Array of all strings that the animation will display.</td>
+					</tr>
+					<tr>
+						<td>
+							<code>typeTextColor</code>
+						</td>
+						<td>
+							<code>string</code>
+						</td>
+						<td>
+							Color of text being typed and deleted by animation. By default set to <code>black</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>constText</code>
+						</td>
+						<td>
+							<code>string</code>
+						</td>
+						<td>Text at the beginning of the animation that will not change. By default, there is none.</td>
+					</tr>
+					<tr>
+						<td>
+							<code>constTextColor</code>
+						</td>
+						<td>
+							<code>string</code>
+						</td>
+						<td>
+							Color of constant text. By default set to <code>black</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>loop</code>
+						</td>
+						<td>
+							<code>boolean</code>
+						</td>
+						<td>
+							If <code>true</code>, the animation will continue to loop through the strings. By default set to <code>false</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>pauseMSec</code>
+						</td>
+						<td>
+							<code>number</code>
+						</td>
+						<td>
+							Number of milliseconds the animation pauses for when the string is complete. By default set to <code>1000</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>typeMSec</code>
+						</td>
+						<td>
+							<code>number</code>
+						</td>
+						<td>
+							Number of milliseconds it takes to add a new character. By default set to <code>100</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>deleteMSec</code>
+						</td>
+						<td>
+							<code>number</code>
+						</td>
+						<td>
+							Number of milliseconds it takes to delete a character. By default set to <code>50</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>fontSize</code>
+						</td>
+						<td>
+							<code>string</code>
+						</td>
+						<td>
+							Font size of text. By default set to <code>20px</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>cursorColor</code>
+						</td>
+						<td>
+							<code>string</code>
+						</td>
+						<td>
+							Color of cursor. By default set to <code>22px</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>cursorHeight</code>
+						</td>
+						<td>
+							<code>string</code>
+						</td>
+						<td>
+							Height of cursor. By default set to <code>2px</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>cursorWidth</code>
+						</td>
+						<td>
+							<code>string</code>
+						</td>
+						<td>
+							Width of cursor. By default set to <code>2px</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>blinkGap</code>
+						</td>
+						<td>
+							<code>string</code>
+						</td>
+						<td>
+							How long it takes for the cursor to blink. By default set to <code>1s</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>...rest</code>
+						</td>
+						<td>
+							<code>any</code>
+						</td>
+						<td>
+							Props like aria tags, classes, etc, will be passed to the <code>button</code> created by the component.
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colSpan={3}>
+							<Req /> props are required for the icon to function.
+						</td>
+					</tr>
+				</tfoot>
+			</Table>
+		</Accordion.Body>
+	)
+}
+IconSamples['TypeTextDelete'] = AccordionTextTypeDelete
