@@ -7,7 +7,7 @@ function IconSampleDocumentation() {
 	return (
 		<Accordion
 			defaultActiveKey='0'
-			style={{ maxWidth: '800px', margin: 'auto' }}
+			style={{ maxWidth: '800px', margin: 'auto', marginBottom: '3em' }}
 		>
 			{Object.keys(IconSamples)
 				.sort()
