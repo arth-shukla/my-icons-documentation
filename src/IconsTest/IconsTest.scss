@@ -12,29 +12,17 @@
 }
 
 .line-sheen-accordion {
-	// --bs-pink-dark: map.get(bs.$pinks, 'pink-800');
-	// --bs-blue-dark: map.get(bs.$blues, 'blue-800');
-	// --bs-orange-dark: map.get(bs.$oranges, 'orange-800');
-	// --bs-purple-dark: map.get(bs.$purples, 'purple-800');
-	// --bs-green-dark: map.get(bs.$greens, 'green-800');
+	--bs-pink-light: #{map.get(bs.$pinks, 'pink-400')};
+	--bs-blue-light: #{map.get(bs.$blues, 'blue-400')};
+	--bs-orange-light: #{map.get(bs.$oranges, 'orange-400')};
+	--bs-purple-light: #{map.get(bs.$purples, 'purple-400')};
+	--bs-green-light: #{map.get(bs.$greens, 'green-400')};
 
-	// @debug map.get(bs.$pinks, 'pink-400');
-	// @debug map.get(bs.$blues, 'blue-400');
-	// @debug map.get(bs.$oranges, 'orange-400');
-	// @debug map.get(bs.$purples, 'purple-400');
-	// @debug map.get(bs.$greens, 'green-400');
-
-	--bs-pink-light: #de5c9d;
-	--bs-blue-light: #3d8bfd;
-	--bs-orange-light: #fd9843;
-	--bs-purple-light: #8c68cd;
-	--bs-green-light: #479f76;
-
-	--bs-pink-dark: #801f4f;
-	--bs-blue-dark: #084298;
-	--bs-orange-dark: #984c0c;
-	--bs-purple-dark: #432874;
-	--bs-green-dark: #0f5132;
+	--bs-pink-dark: #{map.get(bs.$pinks, 'pink-800')};
+	--bs-blue-dark: #{map.get(bs.$blues, 'blue-800')};
+	--bs-orange-dark: #{map.get(bs.$oranges, 'orange-800')};
+	--bs-purple-dark: #{map.get(bs.$purples, 'purple-800')};
+	--bs-green-dark: #{map.get(bs.$greens, 'green-800')};
 }
 
 .rounded-line {
