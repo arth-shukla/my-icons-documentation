@@ -44,7 +44,6 @@ const AccordionColorSwitch = () => {
 
 	return (
 		<Accordion.Body
-			className='change-code-color'
 			style={
 				{
 					'--code-color': colors[currentColorIndex],
@@ -507,16 +506,47 @@ const AccordionTextTypeDelete = () => {
 IconSamples['TypeTextDelete'] = AccordionTextTypeDelete
 
 const AccordionLineSheen = () => {
+	const [currentColorIndex, setCurrentColorIndex] = useState<number>(0)
+	const colors: Array<string> = ['var(--bs-pink)', 'var(--bs-blue)', 'var(--bs-orange)', 'var(--bs-purple)', 'var(--bs-green)']
+	const lightColors: Array<string> = ['var(--bs-pink-light)', 'var(--bs-blue-light)', 'var(--bs-orange-light)', 'var(--bs-purple-light)', 'var(--bs-green-light)']
+	const darkColors: Array<string> = ['var(--bs-pink-dark)', 'var(--bs-blue-dark)', 'var(--bs-orange-dark)', 'var(--bs-purple-dark)', 'var(--bs-green-dark)']
+	const colorNames: Array<string> = ['pink', 'blue', 'orange', 'purple', 'green']
+	const animDuration: number = 0.4 //'.4s'
+
 	return (
-		<Accordion.Body>
+		<Accordion.Body
+			className='line-sheen-accordion'
+			style={
+				{
+					'--code-color': colors[currentColorIndex],
+					'--tr-sec': `${animDuration}s`,
+				} as React.CSSProperties
+			}
+		>
+			<div style={{ display: 'flex', justifyContent: 'right' }}>
+				<ColorSwitch
+					currentColorIndex={currentColorIndex}
+					colors={colors}
+					onClick={() => {
+						setCurrentColorIndex((currentColorIndex + 1) % colors.length)
+					}}
+					animDuration={`${animDuration}s`}
+					size={40}
+					aria-label={`Change color to ${colorNames[(currentColorIndex + 1) % colors.length]}.`}
+					title={`Change color to ${colorNames[(currentColorIndex + 1) % colors.length]}`}
+				/>
+			</div>
 			<p>
 				<LineSheen
-					color='blue'
-					style={{ width: '40px' }}
+					lineHeight='3px'
+					lineColor={lightColors[currentColorIndex]}
+					sheenColor={darkColors[currentColorIndex]}
+					animDuration={animDuration * 3}
+					lineWidth='100%'
 				/>
 			</p>
 			<p>
-				The <code>TextTypeDelete</code> component is an animation which types, then deletes strings of text.
+				The <code>LineSheen</code> component is an animation which changes color of a line with an animation.
 			</p>
 			<Table
 				style={{ color: 'inherit', width: '100%' }}

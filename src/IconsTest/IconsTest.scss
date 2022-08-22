@@ -1,3 +1,6 @@
+@use 'sass:map';
+@use '../../node_modules/bootstrap/scss/bootstrap.scss' as bs;
+
 .accordion-body {
 	--code-color: var(--bs-pink);
 	transition: all var(--tr-sec) ease-in-out;
@@ -6,4 +9,30 @@
 		color: var(--code-color) !important;
 		transition: all var(--tr-sec) ease-in-out;
 	}
+}
+
+.line-sheen-accordion {
+	// --bs-pink-dark: map.get(bs.$pinks, 'pink-800');
+	// --bs-blue-dark: map.get(bs.$blues, 'blue-800');
+	// --bs-orange-dark: map.get(bs.$oranges, 'orange-800');
+	// --bs-purple-dark: map.get(bs.$purples, 'purple-800');
+	// --bs-green-dark: map.get(bs.$greens, 'green-800');
+
+	@debug map.get(bs.$pinks, 'pink-400');
+	@debug map.get(bs.$blues, 'blue-400');
+	@debug map.get(bs.$oranges, 'orange-400');
+	@debug map.get(bs.$purples, 'purple-400');
+	@debug map.get(bs.$greens, 'green-400');
+
+	--bs-pink-light: #de5c9d;
+	--bs-blue-light: #3d8bfd;
+	--bs-orange-light: #fd9843;
+	--bs-purple-light: #8c68cd;
+	--bs-green-light: #479f76;
+
+	--bs-pink-dark: #801f4f;
+	--bs-blue-dark: #084298;
+	--bs-orange-dark: #984c0c;
+	--bs-purple-dark: #432874;
+	--bs-green-dark: #0f5132;
 }
