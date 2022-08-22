@@ -352,6 +352,17 @@ const AccordionTextTypeDelete = () => {
 					</tr>
 					<tr>
 						<td>
+							<code>typeTextStyle</code>
+						</td>
+						<td>
+							<code>{'{}'}</code>
+						</td>
+						<td>
+							Object added to type text style prop. By default set to <code>{'{}'}</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
 							<code>constText</code>
 						</td>
 						<td>
@@ -372,6 +383,28 @@ const AccordionTextTypeDelete = () => {
 					</tr>
 					<tr>
 						<td>
+							<code>constTextAlign</code>
+						</td>
+						<td>
+							<code>string</code>
+						</td>
+						<td>
+							Text alignment of center text. By default set to <code>left</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>constTextStyle</code>
+						</td>
+						<td>
+							<code>{'{}'}</code>
+						</td>
+						<td>
+							Object added to constant text style prop. By default set to <code>{'{}'}</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
 							<code>fontFamily</code>
 						</td>
 						<td>
@@ -379,6 +412,17 @@ const AccordionTextTypeDelete = () => {
 						</td>
 						<td>
 							Font family of <i>all</i> animation text. By default set to <code>'Courier New', Courier, monospace</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>textAlign</code>
+						</td>
+						<td>
+							<code>string</code>
+						</td>
+						<td>
+							Alignment of the animation text. By default set to <code>center</code>.
 						</td>
 					</tr>
 					<tr>
