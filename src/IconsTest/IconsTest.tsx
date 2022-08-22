@@ -307,7 +307,7 @@ const AccordionTextTypeDelete = () => {
 		<Accordion.Body>
 			<p>
 				<TextTypeDelete
-					constText="Hi! I'm "
+					constText="Hi! I'm"
 					typeText={[' a developer.', ' a student.', ' Arth.']}
 					typeTextColor='var(--bs-pink)'
 					fontSize='40px'
@@ -523,6 +523,11 @@ const AccordionLineSheen = () => {
 				} as React.CSSProperties
 			}
 		>
+			<p>
+				<i>
+					Note: This component is only the line. The circle button is the <code>ColorSwitch</code> component, added to demonstrate the <code>LineSheen</code> component's functionality.
+				</i>
+			</p>
 			<div style={{ display: 'flex', justifyContent: 'right' }}>
 				<ColorSwitch
 					currentColorIndex={currentColorIndex}
@@ -538,11 +543,10 @@ const AccordionLineSheen = () => {
 			</div>
 			<p>
 				<LineSheen
-					lineHeight='3px'
+					lineHeight='3.5px'
 					lineColor={lightColors[currentColorIndex]}
 					sheenColor={darkColors[currentColorIndex]}
 					animDuration={animDuration * 3}
-					lineWidth='100%'
 				/>
 			</p>
 			<p>
@@ -562,152 +566,57 @@ const AccordionLineSheen = () => {
 				<tbody>
 					<tr>
 						<td>
-							<code>typeText</code> <Req />
-						</td>
-						<td>
-							<code>string[]</code>
-						</td>
-						<td>Array of all strings that the animation will display.</td>
-					</tr>
-					<tr>
-						<td>
-							<code>typeTextColor</code>
+							<code>lineWidth</code>
 						</td>
 						<td>
 							<code>string</code>
 						</td>
 						<td>
-							Color of text being typed and deleted by animation. By default set to <code>black</code>.
+							Width of line. By default set to <code>100%</code>.
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<code>constText</code>
-						</td>
-						<td>
-							<code>string</code>
-						</td>
-						<td>Text at the beginning of the animation that will not change. By default, there is none.</td>
-					</tr>
-					<tr>
-						<td>
-							<code>constTextColor</code>
+							<code>lineHeight</code>
 						</td>
 						<td>
 							<code>string</code>
 						</td>
 						<td>
-							Color of constant text. By default set to <code>black</code>.
+							Height of line. By default set to <code>2px</code>.
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<code>fontFamily</code>
+							<code>lineColor</code>
 						</td>
 						<td>
 							<code>string</code>
 						</td>
 						<td>
-							Font family of <i>all</i> animation text. By default set to <code>'Courier New', Courier, monospace</code>.
+							Color of line. By default set to <code>black</code>.
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<code>loop</code>
+							<code>sheenColor</code>
 						</td>
 						<td>
-							<code>boolean</code>
+							<code>string</code>
 						</td>
 						<td>
-							If <code>true</code>, the animation will continue to loop through the strings. By default set to <code>false</code>.
+							Color of sheen. The sheen is the animated piece which travels across the line. By default set to <code>gray</code>.
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<code>pauseMSec</code>
+							<code>animDuration</code>
 						</td>
 						<td>
 							<code>number</code>
 						</td>
 						<td>
-							Number of milliseconds the animation pauses for when the string is complete. By default set to <code>1000</code>.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<code>typeMSec</code>
-						</td>
-						<td>
-							<code>number</code>
-						</td>
-						<td>
-							Number of milliseconds it takes to add a new character. By default set to <code>100</code>.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<code>deleteMSec</code>
-						</td>
-						<td>
-							<code>number</code>
-						</td>
-						<td>
-							Number of milliseconds it takes to delete a character. By default set to <code>50</code>.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<code>fontSize</code>
-						</td>
-						<td>
-							<code>string</code>
-						</td>
-						<td>
-							Font size of text. By default set to <code>20px</code>.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<code>cursorColor</code>
-						</td>
-						<td>
-							<code>string</code>
-						</td>
-						<td>
-							Color of cursor. By default set to <code>22px</code>.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<code>cursorHeight</code>
-						</td>
-						<td>
-							<code>string</code>
-						</td>
-						<td>
-							Height of cursor. By default set to <code>2px</code>.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<code>cursorWidth</code>
-						</td>
-						<td>
-							<code>string</code>
-						</td>
-						<td>
-							Width of cursor. By default set to <code>2px</code>.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<code>blinkGap</code>
-						</td>
-						<td>
-							<code>string</code>
-						</td>
-						<td>
-							How long it takes for the cursor to blink. By default set to <code>1s</code>.
+							Duration of animation. By default set to <code>1s</code>.
 						</td>
 					</tr>
 					<tr>
