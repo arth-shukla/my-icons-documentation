@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Accordion, Table } from 'react-bootstrap'
+import { Accordion, Button, Col, Row, Table } from 'react-bootstrap'
 import { ColorSwitch, DarkModeSwitch, TextTypeDelete, LineSheen } from '@arth-shukla/my-icons'
 import './IconsTest.scss'
 
@@ -302,7 +302,149 @@ const AccordionDarkModeSwitch = () => {
 }
 IconSamples['DarkModeSwitch'] = AccordionDarkModeSwitch
 
+const AccordionLineSheen = () => {
+	const [currentColorIndex, setCurrentColorIndex] = useState<number>(0)
+	const colors: Array<string> = ['var(--bs-pink)', 'var(--bs-blue)', 'var(--bs-orange)', 'var(--bs-purple)', 'var(--bs-green)']
+	const lightColors: Array<string> = ['var(--bs-pink-light)', 'var(--bs-blue-light)', 'var(--bs-orange-light)', 'var(--bs-purple-light)', 'var(--bs-green-light)']
+	const darkColors: Array<string> = ['var(--bs-pink-dark)', 'var(--bs-blue-dark)', 'var(--bs-orange-dark)', 'var(--bs-purple-dark)', 'var(--bs-green-dark)']
+	const colorNames: Array<string> = ['pink', 'blue', 'orange', 'purple', 'green']
+	const animDuration: number = 0.4 //'.4s'
+
+	return (
+		<Accordion.Body
+			className='line-sheen-accordion'
+			style={
+				{
+					'--code-color': colors[currentColorIndex],
+					'--tr-sec': `${animDuration}s`,
+				} as React.CSSProperties
+			}
+		>
+			<p>
+				<i>
+					Note: This component is only the line. The circle button is the <code>ColorSwitch</code> component, added to demonstrate the <code>LineSheen</code> component's functionality.
+				</i>
+			</p>
+			<div style={{ display: 'flex', justifyContent: 'right' }}>
+				<ColorSwitch
+					currentColorIndex={currentColorIndex}
+					colors={colors}
+					onClick={() => {
+						setCurrentColorIndex((currentColorIndex + 1) % colors.length)
+					}}
+					animDuration={`${animDuration}s`}
+					size={40}
+					aria-label={`Change color to ${colorNames[(currentColorIndex + 1) % colors.length]}.`}
+					title={`Change color to ${colorNames[(currentColorIndex + 1) % colors.length]}`}
+				/>
+			</div>
+			<p>
+				<LineSheen
+					className='rounded-line'
+					lineHeight='3.5px'
+					lineColor={lightColors[currentColorIndex]}
+					sheenColor={darkColors[currentColorIndex]}
+					animDuration={animDuration * 3}
+				/>
+			</p>
+			<p>
+				The <code>LineSheen</code> component is an animation which changes color of a line with an animation.
+			</p>
+			<Table
+				style={{ color: 'inherit', width: '100%' }}
+				responsive
+			>
+				<thead>
+					<tr>
+						<th>Prop</th>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>lineWidth</code>
+						</td>
+						<td>
+							<code>string</code>
+						</td>
+						<td>
+							Width of line. By default set to <code>100%</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>lineHeight</code>
+						</td>
+						<td>
+							<code>string</code>
+						</td>
+						<td>
+							Height of line. By default set to <code>2px</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>lineColor</code>
+						</td>
+						<td>
+							<code>string</code>
+						</td>
+						<td>
+							Color of line. By default set to <code>black</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>sheenColor</code>
+						</td>
+						<td>
+							<code>string</code>
+						</td>
+						<td>
+							Color of sheen. The sheen is the animated piece which travels across the line. By default set to <code>gray</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>animDuration</code>
+						</td>
+						<td>
+							<code>number</code>
+						</td>
+						<td>
+							Duration of animation. By default set to <code>1s</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>...rest</code>
+						</td>
+						<td>
+							<code>any</code>
+						</td>
+						<td>
+							Props like aria tags, classes, etc, will be passed to the <code>button</code> created by the component.
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colSpan={3}>
+							<Req /> props are required for the icon to function.
+						</td>
+					</tr>
+				</tfoot>
+			</Table>
+		</Accordion.Body>
+	)
+}
+IconSamples['LineSheen'] = AccordionLineSheen
+
 const AccordionTextTypeDelete = () => {
+	const [play, setPlay] = useState<boolean>(false)
+
 	return (
 		<Accordion.Body>
 			<p>
@@ -318,6 +460,43 @@ const AccordionTextTypeDelete = () => {
 			<p>
 				The <code>TextTypeDelete</code> component is an animation which types, then deletes strings of text.
 			</p>
+			<Row>
+				<Col
+					xs={3}
+					md={2}
+					style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+				>
+					<Button
+						id='type-text-play'
+						onClick={() => setPlay(!play)}
+						variant='dark'
+					>
+						{play ? 'Pause' : 'Play'}
+					</Button>
+				</Col>
+				<Col xs={9}>
+					<TextTypeDelete
+						play={play}
+						constText={
+							<>
+								Hi!
+								<br />
+								I'm
+							</>
+						}
+						textAlign='left'
+						typeText={[' a developer.', ' a student.', ' Arth.']}
+						typeTextColor='var(--bs-pink)'
+						fontSize='40px'
+						cursorWidth='3px'
+						cursorHeight='42px'
+						loop={true}
+					/>
+				</Col>
+			</Row>
+			<p>
+				This one is an example of <code>TextTypeDelete</code> with multiple lines, left-alignment, loop, and play/pause functionality.
+			</p>
 			<Table
 				style={{ color: 'inherit', width: '100%' }}
 				responsive
@@ -330,6 +509,28 @@ const AccordionTextTypeDelete = () => {
 					</tr>
 				</thead>
 				<tbody>
+					<tr>
+						<td>
+							<code>play</code>
+						</td>
+						<td>
+							<code>boolean</code>
+						</td>
+						<td>
+							Where or not to play the animation. By default set to <code>true</code>.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>onComplete</code>
+						</td>
+						<td>
+							<code>boolean</code>
+						</td>
+						<td>
+							Where or not to play the animation. By default set to <code>true</code>.
+						</td>
+					</tr>
 					<tr>
 						<td>
 							<code>typeText</code> <Req />
@@ -548,142 +749,3 @@ const AccordionTextTypeDelete = () => {
 	)
 }
 IconSamples['TypeTextDelete'] = AccordionTextTypeDelete
-
-const AccordionLineSheen = () => {
-	const [currentColorIndex, setCurrentColorIndex] = useState<number>(0)
-	const colors: Array<string> = ['var(--bs-pink)', 'var(--bs-blue)', 'var(--bs-orange)', 'var(--bs-purple)', 'var(--bs-green)']
-	const lightColors: Array<string> = ['var(--bs-pink-light)', 'var(--bs-blue-light)', 'var(--bs-orange-light)', 'var(--bs-purple-light)', 'var(--bs-green-light)']
-	const darkColors: Array<string> = ['var(--bs-pink-dark)', 'var(--bs-blue-dark)', 'var(--bs-orange-dark)', 'var(--bs-purple-dark)', 'var(--bs-green-dark)']
-	const colorNames: Array<string> = ['pink', 'blue', 'orange', 'purple', 'green']
-	const animDuration: number = 0.4 //'.4s'
-
-	return (
-		<Accordion.Body
-			className='line-sheen-accordion'
-			style={
-				{
-					'--code-color': colors[currentColorIndex],
-					'--tr-sec': `${animDuration}s`,
-				} as React.CSSProperties
-			}
-		>
-			<p>
-				<i>
-					Note: This component is only the line. The circle button is the <code>ColorSwitch</code> component, added to demonstrate the <code>LineSheen</code> component's functionality.
-				</i>
-			</p>
-			<div style={{ display: 'flex', justifyContent: 'right' }}>
-				<ColorSwitch
-					currentColorIndex={currentColorIndex}
-					colors={colors}
-					onClick={() => {
-						setCurrentColorIndex((currentColorIndex + 1) % colors.length)
-					}}
-					animDuration={`${animDuration}s`}
-					size={40}
-					aria-label={`Change color to ${colorNames[(currentColorIndex + 1) % colors.length]}.`}
-					title={`Change color to ${colorNames[(currentColorIndex + 1) % colors.length]}`}
-				/>
-			</div>
-			<p>
-				<LineSheen
-					lineHeight='3.5px'
-					lineColor={lightColors[currentColorIndex]}
-					sheenColor={darkColors[currentColorIndex]}
-					animDuration={animDuration * 3}
-				/>
-			</p>
-			<p>
-				The <code>LineSheen</code> component is an animation which changes color of a line with an animation.
-			</p>
-			<Table
-				style={{ color: 'inherit', width: '100%' }}
-				responsive
-			>
-				<thead>
-					<tr>
-						<th>Prop</th>
-						<th>Type</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<code>lineWidth</code>
-						</td>
-						<td>
-							<code>string</code>
-						</td>
-						<td>
-							Width of line. By default set to <code>100%</code>.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<code>lineHeight</code>
-						</td>
-						<td>
-							<code>string</code>
-						</td>
-						<td>
-							Height of line. By default set to <code>2px</code>.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<code>lineColor</code>
-						</td>
-						<td>
-							<code>string</code>
-						</td>
-						<td>
-							Color of line. By default set to <code>black</code>.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<code>sheenColor</code>
-						</td>
-						<td>
-							<code>string</code>
-						</td>
-						<td>
-							Color of sheen. The sheen is the animated piece which travels across the line. By default set to <code>gray</code>.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<code>animDuration</code>
-						</td>
-						<td>
-							<code>number</code>
-						</td>
-						<td>
-							Duration of animation. By default set to <code>1s</code>.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<code>...rest</code>
-						</td>
-						<td>
-							<code>any</code>
-						</td>
-						<td>
-							Props like aria tags, classes, etc, will be passed to the <code>button</code> created by the component.
-						</td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<td colSpan={3}>
-							<Req /> props are required for the icon to function.
-						</td>
-					</tr>
-				</tfoot>
-			</Table>
-		</Accordion.Body>
-	)
-}
-IconSamples['LineSheen'] = AccordionLineSheen
