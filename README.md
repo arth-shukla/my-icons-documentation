@@ -24,4 +24,4 @@ A real project where I've used these components is this DnD Dice Roller: https:/
 
 # About Me
 
-Arth Shukla [GitHub](https://github.com/arth-shukla) | [LinkedIn](https://www.linkedin.com/in/arth-shukla/)
+Arth Shukla [Site](https://arth.website) | [GitHub](https://github.com/arth-shukla) | [LinkedIn](https://www.linkedin.com/in/arth-shukla/)
